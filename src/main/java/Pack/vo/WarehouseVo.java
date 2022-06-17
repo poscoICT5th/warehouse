@@ -18,3 +18,4 @@ public class WarehouseVo {
 	String inventory_using;
 	String remarks;
 }
+ 
