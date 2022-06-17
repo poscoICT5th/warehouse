@@ -11,7 +11,7 @@ public class WarehouseSch {
 	String location;
 	String warehouse_code;
 	String purpose;
-	String warehouse_code_desc;
+	String warehouse_desc;
 	String use;
 	float min_maximum_weight;
 	float max_maximum_weight;

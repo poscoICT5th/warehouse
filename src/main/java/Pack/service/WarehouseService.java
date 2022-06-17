@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Pack.mapper.WarehouseMapper;
+import Pack.vo.WarehouseDeleteList;
 import Pack.vo.WarehouseIns;
 import Pack.vo.WarehouseLoc;
 import Pack.vo.WarehouseSch;
@@ -31,6 +32,10 @@ public class WarehouseService {
     
     public int warehouseDel(String warehouseCode) {
     	return mapper.delete(warehouseCode);
+    }
+    
+    public int warehouseDels(WarehouseDeleteList warehouseDeleteList) {
+    	return mapper.deletes(warehouseDeleteList.getWarehouseDeleteList());
     }
     
     public int warehouseIns(WarehouseIns warehouseIns) {

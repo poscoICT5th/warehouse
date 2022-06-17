@@ -12,6 +12,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>warehouse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>warehouse</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -69,6 +70,14 @@
          <groupId>org.mariadb.jdbc</groupId>
          <artifactId>mariadb-java-client</artifactId>
       </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		    <version>2.2.10.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

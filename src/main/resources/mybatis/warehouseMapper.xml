@@ -10,19 +10,19 @@
      	SELECT *
     	FROM Warehouse
     	WHERE
-    		<if test='location != null and location neq ""'>location=#{location} and</if>
-    		<if test='warehouse_code != null and warehouse_code neq ""'>warehouse_code=#{warehouse_code} and</if>
-    		<if test='purpose != null and purpose neq ""'>purpose=#{purpose} and</if>
-    		<if test='warehouse_code_desc != null and warehouse_code_desc neq ""'>warehouse_code_desc like CONCAT('%',#{warehouse_code_desc},'%') and</if>
-    		<if test='use != null and use neq ""'>`use`=#{use} and</if>
-    		<if test='inventory_using != null and inventory_using neq ""'>inventory_using=#{inventory_using} and</if>
-    		<if test='remarks != null and remarks neq ""'>remarks=#{remarks} and</if>
+    		<if test='location != null and location neq "전체보기"'>location=#{location} and</if>
+    		<if test='warehouse_code != null and warehouse_code neq "전체보기"'>warehouse_code=#{warehouse_code} and</if>
+    		<if test='purpose != null and purpose neq "전체보기"'>purpose=#{purpose} and</if>
+    		<if test='warehouse_desc != null and warehouse_desc neq "전체보기"'>warehouse_desc like CONCAT('%',#{warehouse_desc},'%') and</if>
+    		<if test='use != null and use neq "전체보기"'>`use`=#{use} and</if>
+    		<if test='inventory_using != null and inventory_using neq "전체보기"'>inventory_using=#{inventory_using} and</if>
+    		<if test='remarks != null and remarks neq "전체보기"'>remarks=#{remarks} and</if>
 	    	(maximum_weight between #{min_maximum_weight} and #{max_maximum_weight}) and
 	    	(maximum_count between #{min_maximum_count} and #{max_maximum_count})
     </select>
     
     <select id="selectLocation" resultType="Pack.vo.WarehouseLoc">
-    	SELECT warehouse_code 
+    	SELECT distinct warehouse_code
 		FROM Warehouse
 		WHERE location = #{location}
     </select>
@@ -32,6 +32,14 @@
     	WHERE warehouse_code = #{warehouse_code}
     </delete>
     
+    <delete id="deletes" parameterType="List">
+    	<foreach collection="warehouseDeleteList" item="warehouse_code" index="index">
+		    DELETE
+			FROM Warehouse
+			where warehouse_code=#{warehouse_code};
+		</foreach>
+    </delete>
+    
     <insert id="insert" parameterType="Pack.vo.WarehouseIns">
     	INSERT 
     	INTO Warehouse
@@ -39,7 +47,7 @@
 	    	#{location}, 
 	    	#{warehouse_code}, 
 	    	#{purpose}, 
-	    	#{warehouse_code_desc}, 
+	    	#{warehouse_desc}, 
 	    	#{use}, 
 	    	#{maximum_weight},
 	    	#{maximum_count}, 
@@ -53,7 +61,7 @@
     	SET
 	    	location = #{location}, 
 	    	purpose = #{purpose}, 
-	    	warehouse_code_desc = #{warehouse_code_desc}, 
+	    	warehouse_desc = #{warehouse_desc}, 
 	    	`use` = #{use}, 
 	    	maximum_weight = #{maximum_weight},
 	    	maximum_count = #{maximum_count}, 

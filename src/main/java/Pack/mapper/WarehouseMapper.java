@@ -22,6 +22,8 @@ public interface WarehouseMapper {
     
     int delete(String warehouseCode);
     
+    int deletes(List warehouseDeleteList);
+    
     int insert(WarehouseIns warehouseIns);
     
     int update(WarehouseUpd warehouseUpd);

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import Pack.service.TestService;
 import Pack.service.WarehouseService;
 import Pack.vo.TestVo;
+import Pack.vo.WarehouseDeleteList;
 import Pack.vo.WarehouseIns;
 import Pack.vo.WarehouseLoc;
 import Pack.vo.WarehouseSch;
@@ -86,8 +87,17 @@ public class MainController {
 	
 	@DeleteMapping("/{warehouseCode}")
 	public boolean warehouseDel(@PathVariable("warehouseCode") String warehouseCode) {
+		System.out.println("delete");
 		System.out.println(warehouseCode);
 		int result = wareService.warehouseDel(warehouseCode);
+		return result == 1 ? true : false;
+	}
+	
+	@DeleteMapping("/")
+	public boolean warehouseDels(@RequestBody WarehouseDeleteList warehouseDeleteList) {
+		System.out.println("delete List");
+		System.out.println(warehouseDeleteList);
+		int result = wareService.warehouseDels(warehouseDeleteList);
 		return result == 1 ? true : false;
 	}
 }
