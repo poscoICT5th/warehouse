@@ -44,8 +44,8 @@
     	INSERT 
     	INTO Warehouse
     	VALUES (
-	    	#{location}, 
 	    	#{warehouse_code}, 
+	    	#{location}, 
 	    	#{purpose}, 
 	    	#{warehouse_desc}, 
 	    	#{use}, 
